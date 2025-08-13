@@ -97,10 +97,6 @@ if (isset($_GET['cId'])) {
                                         // DELETE Product
 
 
-
-
-
-
 if (isset($_GET['product_id'])) {
     $product_id = $_GET['product_id'];
 
@@ -287,3 +283,4 @@ if (isset($_GET['delete_id'])) {
     echo "<script>alert('Designer deleted'); location.href='ViewDesigner.php';</script>";
 }
 
+                            
