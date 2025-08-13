@@ -228,5 +228,62 @@ if (isset($_POST['addUserDetails'])) {
 
 
 
+                                   //ADD DESIGNER
 
+$dfirstname = $dlastname = $dcontactno = $daddress = $dexperience = $dspecialization = $dportfollio = "";
+$dfirstnameErr = $dlastnameErr = $dcontactnoErr = $daddressErr = $dexperienceErr = $dspecializationErr = $dportfollioErr = "";
+
+
+if (isset($_POST['addDesigner'])) {
+    $dfirstname  = $_POST['dfName'];
+    $dlastname   = $_POST['dlname'];
+    $dcontactno = $_POST['dcnumber'];
+    $daddress   = $_POST['daddress'];
+    $dexperience   = $_POST['dexperience']; // updated name
+    $dspecialization = $_POST['dspecialization'];
+    $dportfollio = $_POST['dportfollio'];
+
+    // Validation
+    if (empty($dfirstname))  $dfirstnameErr = "Product Name is Required";
+    if (empty($dlastname)) $dlastnameErr = "Product Price is Required";
+    if (empty($dcontactno))   $dcontactnoErr = "Product Description is Required";
+    if (empty($daddress))   $daddressErr = "Product Quantity is Required";
+    if (empty($dexperience)) $dexperienceErr = "Product Brand Name is Required";
+    if (empty($dspecialization)) $dspecializationErr = "Product Brand Name is Required";
+    if (empty($dportfollio)) $dportfollioErr = "Product Brand Name is Required";
+   
+    if (
+        empty($dfirstnameErr) &&
+        empty($dlastnameErr) &&
+        empty($dcontactnoErr) &&
+        empty($daddressErr) &&
+        empty($dexperienceErr) &&
+        empty($dspecializationErr) &&
+        empty($dportfollioErr)
+    );{
+    
+            $query = $pdo->prepare("INSERT INTO interioirdesigner (firstname, lastname, contactnumber, address, yearofexperience, specialization, portfolio) 
+                                    VALUES (:dfirstname, :dlastname, :dcontactnumber, :daddress, :dyearofexperience, :dspecialization, :dportfolio)");
+            $query->bindParam(':dfirstname', $dfirstname);
+            $query->bindParam(':dlastname', $dlastname);
+            $query->bindParam(':dcontactnumber', $dcontactno);
+            $query->bindParam(':daddress', $daddress);
+            $query->bindParam(':dyearofexperience', $dexperience);
+            $query->bindParam(':dspecialization', $dspecialization);
+            $query->bindParam(':dportfolio', $dportfollio);
+            $query->execute();
+            echo "<script>alert('Designer added');location.assign('Interiordesigner.php');</script>";
+        }
+    }
+
+                                 //Delete Designer
+
+
+
+if (isset($_GET['delete_id'])) {
+    $id = $_GET['delete_id'];
+    $stmt = $pdo->prepare("DELETE FROM interioirdesigner WHERE designer_id = ?");
+    $stmt->execute([$id]);
+    echo "<script>alert('Designer deleted'); location.href='ViewDesigner.php';</script>";
+}
 

@@ -107,6 +107,8 @@
                 <li class="nav-item"> <a class="nav-link" href="viewCategory.php">View Category</a></li>
                 <li class="nav-item"> <a class="nav-link" href="viewProduct.php">View Product</a></li>
                 <li class="nav-item"> <a class="nav-link" href="addProduct.php">Add Product</a></li>
+                <li class="nav-item"> <a class="nav-link" href="Interiordesigner.php">Add Interior Designer</a></li>
+                <li class="nav-item"> <a class="nav-link" href="viewDesigner.php">View Interior Designer</a></li>
               </ul>
             </div>
           </li>
